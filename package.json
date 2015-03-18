@@ -1,0 +1,19 @@
+{
+  "name": "resources",
+  "version": "0.0.0",
+  "directories": {
+    "test": "test"
+  },
+  "author": "olvado",
+  "license": "MIT",
+  "devDependencies": {
+    "watchify": "^2.4.0",
+    "browserify": "^9.0.3",
+    "browserify-incremental": "^1.4.0"
+  },
+  "dependencies": {
+    "bigbird": "^0.3.5",
+    "browsernizr": "^1.0.2",
+    "jquery": "^2.1.3"
+  }
+}
