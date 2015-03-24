@@ -1,12 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html class="no-js">
 <head>
   <title>Resources</title>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0">
+  <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= csrf_meta_tags %>
+  <%= javascript_include_tag 'modernizr' %>
 </head>
-<body>
-  <%= yield %>
+
+<%= content_tag :body, data: { module: controller_name, action: action_name } do %>
+  <section class="app">
+    <div class="app--notifier js-notifier"></div>
+    <section class="app--content">
+      <%= yield %>
+    </section>
+  </section>
   <%= javascript_include_tag 'application' %>
-</body>
+<% end %>
+
 </html>

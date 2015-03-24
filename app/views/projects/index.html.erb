@@ -1,2 +1,11 @@
-<h1>Projects#index</h1>
-<p>Find me in app/views/projects/index.html.erb</p>
+<section class="weeks">
+  <% @weeks.each do |week| %>
+    <div class="week position-<%= week.number %>">
+      <div class="week-number"><%= week.number %></div>
+      <div class="week-details" data-bb-el="week-details">
+        <%= number_to_currency(week.fee, unit: "£") %>
+      </div>
+    </div>
+  <% end %>
+  <%= render @projects %>
+</section>

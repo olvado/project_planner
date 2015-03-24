@@ -4,12 +4,13 @@ class CreateProjects < ActiveRecord::Migration
       t.string :name, null: false
       t.string :color, null: false
       t.integer :weeks, null: false
-      t.decimal :total_fee, null: false
-      t.date :start_at, null: false
+      t.decimal :fee, null: false, precision: 10, scale: 2 
+      t.datetime :start_at, null: false
+      t.datetime :end_at
 
       t.timestamps null: false
     end
-    add_index :projects, [:total_fee]
+    add_index :projects, [:fee]
     add_index :projects, [:start_at]
   end
 end

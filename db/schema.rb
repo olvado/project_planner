@@ -17,24 +17,26 @@ ActiveRecord::Schema.define(version: 20150318120618) do
   enable_extension "plpgsql"
 
   create_table "projects", force: :cascade do |t|
-    t.string   "name",       null: false
-    t.string   "color",      null: false
-    t.integer  "weeks",      null: false
-    t.decimal  "total_fee",  null: false
-    t.date     "start_at",   null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",                                null: false
+    t.string   "color",                               null: false
+    t.integer  "weeks",                               null: false
+    t.decimal  "fee",        precision: 10, scale: 2, null: false
+    t.datetime "start_at",                            null: false
+    t.datetime "end_at"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
 
+  add_index "projects", ["fee"], name: "index_projects_on_fee", using: :btree
   add_index "projects", ["start_at"], name: "index_projects_on_start_at", using: :btree
-  add_index "projects", ["total_fee"], name: "index_projects_on_total_fee", using: :btree
 
   create_table "resources", force: :cascade do |t|
-    t.string   "name",       null: false
-    t.integer  "allocation", null: false
-    t.integer  "project_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",                                null: false
+    t.decimal  "allocation", precision: 3,  scale: 2, null: false
+    t.decimal  "fee",        precision: 10, scale: 2, null: false
+    t.integer  "project_id"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
 
   add_index "resources", ["project_id"], name: "index_resources_on_project_id", using: :btree

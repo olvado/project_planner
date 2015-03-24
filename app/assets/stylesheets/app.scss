@@ -1,0 +1,108 @@
+$grey-pale: rgb(237, 237, 237);
+$grey-pale-alpha: rgba(237, 237, 237, 0.4);
+$grey-light: rgb(201, 201, 201);
+$grey-light-alpha: rgba(201, 201, 201, 0.4);
+$grey-mid: #666;
+$grey-dark: #242424;
+
+$block-size: 40px;
+$block-gutter: 1px;
+$block-inner: $block-size - ($block-gutter * 2);
+
+$i: 1;
+$position: 0;
+@while $i <= 53 {
+  .position-#{$i} { left: $position; }
+  .margin-#{$i}   { margin-left: $position; }
+  .span-#{$i}     { width: $block-size * $i; }
+  $i: $i + 1;
+  $position: $position + $block-size;
+}
+
+.weeks {
+  min-height: $block-size * 12;
+  border: 1px solid $grey-light;
+  border-right: 0;
+  padding-bottom: $block-size;
+  position: relative;
+}
+
+.week {
+  border-right: 1px dotted $grey-light;
+  width: $block-size;
+  position: absolute;
+  top: 0; bottom: 0;
+}
+
+.week-number {
+  position: absolute;
+  bottom: 0;
+  width: $block-size;
+  height: $block-size;
+  line-height: $block-size;
+  text-align: center;
+  border-top: 1px dotted $grey-light;
+  background: $grey-pale;
+}
+
+.week-details {
+  z-index: 100;
+  position: absolute;
+  bottom: -20px;
+  height: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: $grey-mid;
+  border: 1px solid $grey-dark;
+  display: none;
+  color: $grey-pale;
+  .week:hover & {
+    display: block;
+  }
+}
+
+.block {
+  position: relative;
+  max-height: $block-size;
+  @include transition(all 0.2s ease-in-out);
+  &.is-active {
+    max-height: 600px;
+    .block--inner {
+      max-height: 500px;
+    }
+    .block--details {
+      min-width: 450px;
+      max-height: 500px;
+    }
+  }
+}
+
+.block--inner {
+  margin: $block-gutter 0;
+  max-height: $block-inner;
+  border-radius: 5px;
+  @include transition(all 0.2s ease-in-out);
+}
+
+.block--title {
+  font-size: 1em;
+  margin: 0;
+  height: $block-inner;
+  line-height: $block-inner;
+  padding: 0 0.5em;
+  white-space: nowrap;
+}
+
+.block--details {
+  padding: 0 0.5em;
+  white-space: nowrap;
+  border-radius: 5px;
+  width: auto;
+  height: auto;
+  max-height: 0;
+  overflow: hidden;
+  @include transition(all 0.2s ease-in-out);
+}
+
+
+
