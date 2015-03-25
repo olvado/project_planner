@@ -18,12 +18,12 @@ class ProjectsController < ApplicationController
   end
 
   def new
-    @project = Projects.new
+    @project = Project.new
     @project.resources.build
   end
 
   def edit
-    @project = Projects.find(params[:id])
+    @project = Project.find(params[:id])
     @project.resources.build
   end
 

@@ -1,0 +1,23 @@
+$grey-pale: rgb(237, 237, 237);
+$grey-light: rgb(201, 201, 201);
+$grey-mid: #666;
+$grey-dark: #242424;
+
+$block-size: 40px;
+$block-gutter: 2px;
+$block-inner: $block-size - ($block-gutter * 2);
+
+$i: 1;
+$position: 0;
+@while $i <= 53 {
+  .position-#{$i} { left: $position; }
+  .margin-#{$i}   { margin-left: $position; }
+  .span-#{$i}     { width: $block-size * $i; }
+  $i: $i + 1;
+  $position: $position + $block-size;
+}
+
+
+
+
+

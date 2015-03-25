@@ -1,0 +1,6 @@
+<%= simple_form_for @project do |f| %>
+  <%= f.input :name %>
+  <%= f.input :fee %>
+  <%= f.input :start_at, collection: @project.weeks_for_select %>
+  <%= f.submit %>
+<% end %>

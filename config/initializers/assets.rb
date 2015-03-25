@@ -5,4 +5,4 @@ Rails.application.config.serve_static_files = true
 Rails.application.config.assets.enabled = true
 Rails.application.config.assets.initialize_on_precompile = false
 
-Rails.application.config.assets.precompile += %w( modernizr.js )
+Rails.application.config.assets.precompile += %w( modernizr.js app_cocoon.js )

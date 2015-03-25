@@ -16,17 +16,14 @@ class Project < ActiveRecord::Base
   end
 
   def total_fees
-    return 0.to_d unless resources.any?
-    resources.map(&:fee).sum.round(2)
+    return 0 unless resources.any?
+    resources.collect(&:fee).sum.round(2)
   end
 
-  def invert_color
-    colour = color
-    new_color = ColorMath::hex_color(colour)
-    white = ColorMath::hex_color("#ffffff")
-    black = ColorMath::hex_color("#000000")
-    blend_with = new_color.luminance <= 0.5 ? white : black
-    ColorMath::Blend.alpha(blend_with, new_color, 0.2).hex
+  def weeks_for_select
+    year_start = Date.today.beginning_of_year.beginning_of_week
+    year_end   = Date.today.end_of_year.end_of_week
+    mondays    = (year_start..year_end).to_a.select {|k| [1].include?(k.wday) }.map{ |d| d.strftime("%a %d %b %Y") }
   end
 
 private
@@ -34,6 +31,13 @@ private
   def set_end_at
     date = (start_at + weeks.weeks).end_of_week.end_of_day
     update_attribute(:end_at, date)
+  end
+
+  def permitted_params
+    params.require(:project).permit(
+        :name, :description, :fee, :start_at, 
+        resources: {}
+      )
   end
 
 end

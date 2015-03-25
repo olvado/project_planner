@@ -1,3 +1,5 @@
+<h1><%= Date.today.cwyear %></h1>
+<%= link_to "New block", new_project_path %>
 <section class="weeks">
   <% @weeks.each do |week| %>
     <div class="week position-<%= week.number %>">
