@@ -2,6 +2,7 @@ class Project < ActiveRecord::Base
   has_many :resources
 
   validates :color, css_hex_color: true
+  validates_presence_of :name, :fee, :start_at, :weeks
 
   accepts_nested_attributes_for :resources, reject_if: proc { |attributes| attributes['name'].blank? || attributes['allocation'].blank? }, allow_destroy: true
 
@@ -31,13 +32,6 @@ private
   def set_end_at
     date = (start_at + weeks.weeks).end_of_week.end_of_day
     update_attribute(:end_at, date)
-  end
-
-  def permitted_params
-    params.require(:project).permit(
-        :name, :description, :fee, :start_at, 
-        resources: {}
-      )
   end
 
 end

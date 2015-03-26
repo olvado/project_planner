@@ -1,0 +1,53 @@
+
+
+.simple_form {
+  overflow: hidden;
+}
+
+.input {
+  padding-top: 0.25em;
+  padding-bottom: 0.25em;
+  
+  label {
+    display: inline-block;
+    min-width: 100px;
+    @include small-caps;
+  }
+  
+  #{$all-text-inputs} {
+    border: 1px solid $grey-light;
+    padding: 0.5em;
+    width: 180px;
+  }
+
+}
+
+.nested-fields {
+  .input {
+    display: inline-block;
+    border-bottom: 1px solid $grey-pale;
+    label {
+      display: block;
+      min-width: 0;
+      padding-right: 0.5em;
+    }
+  }
+  .project_resources_allocation {
+    input {
+      width: 50px;
+    }
+  }
+  .project_resources_fee {
+    input {
+      width: 100px;
+    }
+  }
+  &:first-child {
+    background: pink;
+    .input {
+      label {
+        display: none;
+      }
+    }
+  }
+}

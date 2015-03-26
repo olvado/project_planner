@@ -22,16 +22,40 @@ class ProjectsController < ApplicationController
     @project.resources.build
   end
 
+  def create
+    @project = Project.new(permitted_params)
+    if @project.save
+      redirect_to root_url, notice: "Project added."
+    else
+      render :new
+    end
+  end
+
   def edit
     @project = Project.find(params[:id])
     @project.resources.build
   end
 
-  def create
-    @project = Project.new(permitted_params)
+  def update
+    @project = Project.find(params[:id])
+    if @project.update(permitted_params)
+      redirect_to root_url, notice: "Project updated."
+    else
+      render :edit
+    end
   end
 
+
 private
+
+  def permitted_params
+    params.require(:project).permit(
+        :name, :description, :fee, :start_at, :color, :weeks,
+        resources_attributes: [
+          :id, :name, :allocation, :fee
+        ]
+      )
+  end
 
   def fee(w, projects, date)
     the_fee = 0.0

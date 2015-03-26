@@ -1,6 +1,5 @@
 "use strict";
 
-
 var $ = require('jquery');
 var BigBird = require('bigbird');
 

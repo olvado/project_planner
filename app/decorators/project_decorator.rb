@@ -13,8 +13,8 @@ class ProjectDecorator < Draper::Decorator
     new_color = ColorMath::hex_color(color)
     white = ColorMath::hex_color("#ffffff")
     black = ColorMath::hex_color("#000000")
-    blend_with = new_color.luminance <= 0.5 ? white : black
-    ColorMath::Blend.alpha(blend_with, new_color, 0.2).hex
+    blend_with = new_color.luminance >= 0.55 ? white : black
+    ColorMath::Blend.alpha(blend_with, new_color, 0.25).hex
   end
 
   def tint_color(amount = 0.2)

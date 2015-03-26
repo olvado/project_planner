@@ -15,7 +15,8 @@
       <%= yield %>
     </section>
   </section>
-  <%= javascript_include_tag 'app_cocoon', 'application' %>
+  <%= yield :foot %>
+  <%= javascript_include_tag 'application' %>
 <% end %>
 
 </html>

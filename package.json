@@ -9,7 +9,8 @@
   "devDependencies": {
     "watchify": "^2.4.0",
     "browserify": "^9.0.3",
-    "browserify-incremental": "^1.4.0"
+    "browserify-incremental": "^1.4.0",
+    "browserify-shim": "^3.8.3"
   },
   "dependencies": {
     "bigbird": "^0.3.5",

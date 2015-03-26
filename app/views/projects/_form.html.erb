@@ -1,6 +1,18 @@
+<%= content_for :foot, javascript_include_tag('app_cocoon') %>
 <%= simple_form_for @project do |f| %>
   <%= f.input :name %>
-  <%= f.input :fee %>
-  <%= f.input :start_at, collection: @project.weeks_for_select %>
+  <%= f.input :fee, input_html: { class: 'currency' } %>
+  <%= f.input :weeks %>
+  <%= f.input :start_at, collection: @project.weeks_for_select, selected: @project.new_record? ? nil : @project.start_at.strftime("%a %d %b %Y") %>
+  <%= f.input :color %>
+  <section id="resources">
+    <h3>Allocated resources</h3>
+    <%= f.simple_fields_for :resources do |resource| %>
+      <%= render 'resource_fields', :f => resource %>
+    <% end %>
+    <nav class="links">
+      <%= link_to_add_association 'add resource', f, :resources %>
+    </nav>
+  </section>
   <%= f.submit %>
 <% end %>

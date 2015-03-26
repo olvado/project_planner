@@ -18,6 +18,14 @@ $position: 0;
 }
 
 
-
+@mixin caps() {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+@mixin small-caps() {
+  @include caps();
+  font-size: 0.768em;
+  line-height: 1.3;
+}
 
 
