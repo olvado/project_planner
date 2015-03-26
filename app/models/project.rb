@@ -6,7 +6,7 @@ class Project < ActiveRecord::Base
 
   accepts_nested_attributes_for :resources, reject_if: proc { |attributes| attributes['name'].blank? || attributes['allocation'].blank? }, allow_destroy: true
 
-  before_validation :set_end_at
+  before_validation :set_end_at, :set_random_hex
 
   def to_s
     name
@@ -32,6 +32,11 @@ private
   def set_end_at
     date = (start_at + weeks.weeks).end_of_week.end_of_day
     update_attribute(:end_at, date)
+  end
+
+  def set_random_hex
+    return if color.present?
+    update_attribute(:color, "##{SecureRandom.hex(3)}")
   end
 
 end

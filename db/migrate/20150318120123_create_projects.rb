@@ -2,7 +2,7 @@ class CreateProjects < ActiveRecord::Migration
   def change
     create_table :projects do |t|
       t.string :name, null: false
-      t.string :color, null: false
+      t.string :color
       t.integer :weeks, null: false
       t.decimal :fee, null: false, precision: 10, scale: 2 
       t.datetime :start_at, null: false

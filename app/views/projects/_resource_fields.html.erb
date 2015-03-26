@@ -1,6 +1,6 @@
 <div class="nested-fields">
   <%= f.input :id, as: :hidden %>
-  <%= f.input :name, collection: Resource::ROLES.collect{|r| r[:name] } %>
+  <%= f.input :name, collection: Resource::ROLES.collect{|r| r[:name] }, input_html: {class: "js-resource_select"} %>
   <%= f.input :allocation, placeholder: "0.2" %>
   <%= f.input :fee, placeholder: "£" %>
   <%= link_to_remove_association "Remove", f %>

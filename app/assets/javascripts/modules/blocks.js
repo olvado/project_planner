@@ -12,7 +12,6 @@ module.exports = BigBird.Module.extend({
   },
 
   initialize: function() {
-    console.log('initialize');
   },
 
   OnBlockToggle: function(e) {

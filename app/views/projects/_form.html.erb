@@ -1,4 +1,7 @@
-<%= content_for :foot, javascript_include_tag('app_cocoon') %>
+<%= content_for :foot do %>
+  <%= javascript_include_tag('app_cocoon') %>
+  <%= javascript_tag "var resources = #{Resource::ROLES.to_json}" %>
+<% end %>
 <%= simple_form_for @project do |f| %>
   <%= f.input :name %>
   <%= f.input :fee, input_html: { class: 'currency' } %>

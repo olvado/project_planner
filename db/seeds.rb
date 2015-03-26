@@ -8,25 +8,21 @@ projects = Project.create([
       start_at: Date.today.beginning_of_week
     }, {
       name: "ITV Election",
-      color: "##{SecureRandom.hex(3)}",
       weeks: "12",
       fee: 155000.00,
       start_at: 3.weeks.ago.beginning_of_week
     }, {
       name: "Composed Incubator",
-      color: "##{SecureRandom.hex(3)}",
       weeks: "4",
       fee: 32000.00,
       start_at: Date.today.beginning_of_month.beginning_of_week
     }, {
       name: "Expedia",
-      color: "##{SecureRandom.hex(3)}",
       weeks: "8",
       fee: 190000.00,
       start_at: 6.weeks.ago.beginning_of_week
     }, {
       name: "V&A",
-      color: "##{SecureRandom.hex(3)}",
       weeks: "6",
       fee: 142450.00,
       start_at: 1.week.ago.beginning_of_week

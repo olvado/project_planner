@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20150318120618) do
 
   create_table "projects", force: :cascade do |t|
     t.string   "name",                                null: false
-    t.string   "color",                               null: false
+    t.string   "color"
     t.integer  "weeks",                               null: false
     t.decimal  "fee",        precision: 10, scale: 2, null: false
     t.datetime "start_at",                            null: false

@@ -1,13 +1,21 @@
-<h1><%= Date.today.cwyear %></h1>
-<%= link_to "New block", new_project_path %>
-<section class="weeks">
-  <% @weeks.each do |week| %>
-    <div class="week position-<%= week.number %>">
-      <div class="week-number"><%= week.number %></div>
-      <div class="week-details" data-bb-el="week-details">
-        <%= number_to_currency(week.fee, unit: "£") %>
-      </div>
+<article class="page">
+  <header class="page--header">
+    <h1 class="page--title"><%= Date.today.cwyear %></h1>
+    <nav class="page--nav">
+      <%= link_to "New block", new_project_path, class: "page--nav-item" %>
+    </nav>
+  </header>
+  <section class="page--content">  
+    <div class="weeks">
+      <% @weeks.each do |week| %>
+        <div class="week position-<%= week.number %>">
+          <div class="week-number"><%= week.number %></div>
+          <div class="week-details" data-bb-el="week-details">
+            <%= number_to_currency(week.fee, unit: "£") %>
+          </div>
+        </div>
+      <% end %>
+      <%= render @projects %>
     </div>
-  <% end %>
-  <%= render @projects %>
-</section>
+  </section>
+</article>

@@ -2,9 +2,9 @@
 .weeks {
   min-height: $block-size * 12;
   border: 1px solid $grey-light;
-  border-right: 0;
   padding-bottom: $block-size;
   position: relative;
+  overflow: auto;
 }
 
 .week {
