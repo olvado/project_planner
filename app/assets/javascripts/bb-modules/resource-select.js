@@ -25,7 +25,6 @@ module.exports = BigBird.Module.extend({
     $('.project_resources_allocation input', parent).val(resource[0].allocation);
     $('.project_resources_fee input', parent).val(resource[0].fee);
 
-    console.log(resource[0].fee);
   }
 
 });

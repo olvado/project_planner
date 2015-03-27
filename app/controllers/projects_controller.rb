@@ -12,6 +12,20 @@ class ProjectsController < ApplicationController
       }
       @weeks << OpenStruct.new(hash)
     end
+    respond_to do |format|
+      format.html
+      format.json { render json: {
+          weeks: @weeks,
+          projects: @projects.map{|p| {
+              id: p.id,
+              name: p.name,
+              weeks: p.weeks,
+              start_at: p.start_at.strftime("%F"),
+              week: p.week,
+              color: p.color
+            } }
+        } }
+    end
   end
 
   def show
@@ -62,7 +76,7 @@ private
     projects.each do |p|
       the_fee += (p.fee / p.weeks) if (p.start_at..p.end_at).cover?(date.to_time)
     end
-    the_fee
+    the_fee.round(2)
   end
 
 end
