@@ -1,0 +1,15 @@
+
+.project-planner {
+  width: 1000px;
+  height: 600px;
+  border: 1px solid $grey-light;
+  position: relative;
+  overflow: auto;
+  overflow-y: hidden;
+}
+.canvas {
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 0; right: 0;
+  background: transparent;
+}

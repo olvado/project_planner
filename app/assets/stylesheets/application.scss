@@ -3,9 +3,13 @@
 @import "css-patterns/stylesheets/patterns";
 
 @import "app";
+@import "variables";
+@import "fonts";
+@import "typography";
 @import "patterns/buttons";
 @import "modules/forms";
 @import "modules/weeks";
 @import "modules/blocks";
+@import "modules/project-planner";
 
 

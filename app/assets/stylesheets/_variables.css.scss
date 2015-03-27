@@ -1,0 +1,53 @@
+$gutter: 12px;
+
+$grey-pale: rgba(240, 243, 245, 1);
+$grey-light: rgb(201, 201, 201);
+$grey-mid: #999;
+$grey-dark: #484848;
+
+// Primary colours
+
+$blue: #244C62;
+$purple: #795ACA;
+
+// Secondary colours
+
+$red: #D15249;
+$teal: #36A58D;
+$mid-blue: #317DA9;
+$light-blue: #0096D2;
+$yellow: #DCAA16;
+
+
+
+
+
+
+// Social colours
+$linkedin: #0976B4;
+$facebook: #3B5998;
+$instagram: #3F729B;
+$twitter: #55ACEE;
+$slideshare: #F08C1E;
+
+
+
+
+
+
+// Blocks
+
+$block-size: 40px;
+$block-gutter: 2px;
+$block-inner: $block-size - ($block-gutter * 2);
+
+$i: 1;
+$position: 0;
+@while $i <= 53 {
+  .position-#{$i} { left: $position; }
+  .margin-#{$i}   { margin-left: $position; }
+  .span-#{$i}     { width: $block-size * $i; }
+  $i: $i + 1;
+  $position: $position + $block-size;
+}
+

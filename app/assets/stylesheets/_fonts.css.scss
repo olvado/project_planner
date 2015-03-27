@@ -1,0 +1,52 @@
+
+@font-face {
+  font-family: 'Brown';
+  src: font_url('brown-bold-webfont.eot');
+  src: font_url('brown-bold-webfont.svg#Brown') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Brown';
+  src: font_url('brown-bold-webfont.eot');
+  src: font_url('brown-bold-webfont.svg#Brown') format('svg');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Davis';
+  src: font_url('DavisBold.eot');
+  src: font_url('DavisBold.woff') format('woff'),
+       font_url('DavisBold.ttf') format('truetype'),
+       font_url('DavisBold.svg#DavisLight') format('svg');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Davis';
+  src: font_url('DavisLight.eot');
+  src: font_url('DavisLight.woff') format('woff'),
+       font_url('DavisLight.ttf') format('truetype'),
+       font_url('DavisLight.svg#DavisLight') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@mixin font-davis {
+  font-family: "Davis", "Comic sans";
+}
+@mixin font-brown {
+  font-family: "Brown", Helvetica, Arial, sans-serif;
+}
+@mixin font-freight {
+  font-family: "freight-sans-pro", Helvetica, Arial, sans-serif;
+  .wf-loading & {
+    visibility: hidden;
+  }
+  .wf-active & {
+    visibility: visible;
+  }
+}
