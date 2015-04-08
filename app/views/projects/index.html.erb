@@ -7,9 +7,10 @@
   </header>
   <section class="page--content">
     <div class="project-planner" data-json-url="<%= projects_path(format: :json) %>">
-      <canvas id="project-planner_weeks"></canvas>
-      <canvas id="project-planner_projects"></canvas>
+      <div class="project-planner_details" data-bb-el="details"></div>
+      <div class="project-planner_canvas">
+        <canvas id="project-planner" data-bb-el="canvas"></canvas>
+      </div>
     </div>
-    <div class="project-details js-project-details"></div>
   </section>
 </article>

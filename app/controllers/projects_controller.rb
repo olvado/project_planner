@@ -23,7 +23,7 @@ class ProjectsController < ApplicationController
               start_at: p.start_at.strftime("%F"),
               week: p.week,
               color: p.color,
-              url: project_path(p, format: :json)
+              url: project_path(p)
             } }
         } }
     end

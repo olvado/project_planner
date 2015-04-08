@@ -17,29 +17,31 @@ module.exports = BigBird.Module.extend({
     var PP = this,
         url = PP.$el.data('json-url');
 
-    PP.WeeksCanvas = new fabric.Canvas('project-planner_weeks');
-    PP.ProjectsCanvas = new fabric.Canvas('project-planner_projects');
-    PP.canvasHeight = PP.$el.height();
-    PP.WeeksCanvas.setHeight(PP.canvasHeight);
-
     $.get(url, function(result) {
       PP.result = result;
       PP.weekCount = result.weeks.length;
-      PP.canvasWidth = PP.blockSize * PP.weekCount;
-
-      PP.WeeksCanvas.setWidth(PP.canvasWidth);
-      PP.ProjectCanvas.setWidth(PP.canvasWidth);
-      PP.setupWeeks();
-      // PP.setUpBlocks();
+      
+      PP.setupCanvas();
+      PP.setUpWeeks();
+      PP.setUpBlocks();
+      PP.setUpEvents();
     });
 
   },
 
-  setupWeeks: function() {
+  setupCanvas: function() {
+    this.canvas = new fabric.Canvas('project-planner');
+    this.canvasWidth = this.blockSize * this.weekCount;
+    this.canvasHeight = this.$el.height();
+    this.canvas.setWidth(this.canvasWidth);
+    this.canvas.setHeight(this.canvasHeight);
+    this.canvas.selection = false;
+  },
+
+  setUpWeeks: function() {
     var PP = this,
         x = 0;
     
-
     _.each(PP.result.weeks, function(week) {
       var week = week.table,
           weekNo = week.number.toString();
@@ -69,7 +71,9 @@ module.exports = BigBird.Module.extend({
             lockScalingX: true,
             lockRotation: true,
             hasControls: false,
-            hoverCursor: 'pointer'
+            hoverCursor: 'pointer',
+            dataType: "week",
+            data: week
           });
 
       x += PP.blockSize;
@@ -79,13 +83,99 @@ module.exports = BigBird.Module.extend({
             stroke: 'rgba(204,204,204,0.75)',
             evented: false, selectable: false
           });
-      PP.WeeksCanvas.add(line);
-      PP.WeeksCanvas.add(group);
+      PP.canvas.add(line);
+      PP.canvas.add(group);
     });
-    PP.WeeksCanvas.on("object:selected", function(week){
-      console.log(week.isPrototypeOf(week));
-    });
+
       
+  },
+
+  setUpBlocks: function() {
+    var PP = this,
+        y  = 0;
+    
+    _.each(PP.result.projects, function(project) {
+      var width = project.weeks * PP.blockSize,
+          rect = new fabric.Rect({
+            top: 0,
+            left: 0,
+            fill: project.color,
+            width: width,
+            height: PP.blockSize
+          }),
+          text = new fabric.Text(project.name, {
+            top: 16,
+            left: 8,
+            fontSize: 16,
+            fontFamily: "Arial"
+          });
+
+      var group = new fabric.Group([rect, text], {
+        width: width,
+        height: PP.blockSize,
+        left: project.week * PP.blockSize,
+        top: y,
+        hasRotatingPoint: false,
+        lockMovementY: true,
+        lockScalingY: true,
+        lockScalingFlip: true,
+        dataType: "project",
+        data: project,
+        originX: 'left'
+      })
+
+      PP.canvas.add(group);
+      y += PP.blockSize;
+    });
+
+
+  },
+
+  setUpEvents: function() {
+    var PP = this;
+
+    this.canvas.on('object:modified', function(e) {
+      var block = e.target,
+          obj = block.toObject();
+      if (block.dataType == "project") {
+        block.setLeft(PP.nearestBlock(obj.left));
+        PP.resetScaleToWidth(block);
+      }
+    });
+
+    this.canvas.on("object:selected", function(obj) {
+      switch(obj.target.dataType) {
+        case "week":
+          console.log(obj.target);
+          break;
+        case "project":
+          PP.saveBlockData(obj.target);
+          break;
+      }
+
+    });
+  },
+
+  saveBlockData: function(block) {
+    console.log(block);
+  },
+
+  nearestBlock: function(n) {
+    return this.blockSize * Math.round(n / this.blockSize);
+  },
+
+  resetScaleToWidth: function(block) {
+    var obj = block.toObject(),
+        rect = block._objects[0],
+        text = block._objects[1],
+        width = this.nearestBlock(obj.width * obj.scaleX);
+
+    rect.setWidth(width);
+    rect.setLeft(-(width/2));
+    text.setLeft(-(width/2) + 8);
+
+    block.setWidth(width);
+    block.setScaleX(1);
   }
 
 });

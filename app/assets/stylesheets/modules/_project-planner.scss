@@ -1,13 +1,21 @@
 
+
 .project-planner {
+  overflow: hidden;
+  height: 602px;
+}
+
+.project-planner_canvas {
   margin-right: 300px;
   height: 600px;
   border: 1px solid $grey-light;
   position: relative;
   overflow: auto;
-  .canvas-container {
-    position: absolute !important;
-    top: 0; bottom: 0;
-    left: 0; right: 0;
-  }
+}
+
+.project-planner_details {
+  float: right;
+  min-height: 200px;
+  width: 280px;
+  border-left: 1px dotted $grey-light;
 }
