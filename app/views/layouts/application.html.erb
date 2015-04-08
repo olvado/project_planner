@@ -10,7 +10,7 @@
 
 <%= content_tag :body, data: { module: controller_name, action: action_name } do %>
   <section class="app">
-    <div class="app--notifier js-notifier"></div>
+    <div class="app--messenger"><div class="app--messenger_message js-messenger"></div></div>
     <section class="app--content">
       <%= yield %>
     </section>

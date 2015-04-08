@@ -15,7 +15,21 @@
   overflow: hidden;
 }
 
+.app--messenger {
+  position: fixed;
+  top: 10px;
+  left: 0;
+  right: 100%;
+  width: 100%;
+  text-align: center;
+}
+.app--messenger_message {
+  display: inline-block;
+  background: pink;
+  margin: auto;
+}
+
 .app--content {
-  max-width: 1040px;
+  max-width: 1400px;
   margin: auto;
 }

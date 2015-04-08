@@ -22,13 +22,22 @@ class ProjectsController < ApplicationController
               weeks: p.weeks,
               start_at: p.start_at.strftime("%F"),
               week: p.week,
-              color: p.color
+              color: p.color,
+              url: project_path(p, format: :json)
             } }
         } }
     end
   end
 
   def show
+    @project = Project.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.json { render json: {
+          project: @project,
+          resources: @project.resources
+        } }
+    end
   end
 
   def new

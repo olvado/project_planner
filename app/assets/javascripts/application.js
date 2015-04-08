@@ -4,8 +4,9 @@ var $ = require('jquery');
 var BigBird = require('bigbird');
 
 // BigBird Nodules
-var Blocks = require('bb-modules/blocks');
+var Messenger = require('bb-modules/messenger');
 var ResourceSelect = require('bb-modules/resource-select');
+var ProjectDetails = require('bb-modules/project-details');
 var ProjectPlanner = require('bb-modules/project-planner');
 
 // BigBird Initializer
@@ -13,7 +14,7 @@ var initializer = new BigBird.Initializer({
   modules: {
     common: {
       initialize: function initializeAction() {
-        var blocks = new Blocks();
+        var messenger = new Messenger();
       }
     },
     projects: {
@@ -21,6 +22,7 @@ var initializer = new BigBird.Initializer({
         var resourceSelect = new ResourceSelect();
       },
       index: function() {
+        var projectDetails = new ProjectDetails();
         var projectPlanner = new ProjectPlanner();
       }
     }

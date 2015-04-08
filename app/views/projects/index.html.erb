@@ -7,9 +7,9 @@
   </header>
   <section class="page--content">
     <div class="project-planner" data-json-url="<%= projects_path(format: :json) %>">
-      <canvas class="canvas canvas--weeks"></canvas>
-      <canvas class="canvas canvas--blocks"></canvas>
+      <canvas id="project-planner_weeks"></canvas>
+      <canvas id="project-planner_projects"></canvas>
     </div>
-    <%#= render 'index' %>
+    <div class="project-details js-project-details"></div>
   </section>
 </article>
