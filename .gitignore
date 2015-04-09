@@ -13,5 +13,5 @@
 /tmp
 .DS_Store
 
-config/database.yml
+#config/database.yml
 node_modules
