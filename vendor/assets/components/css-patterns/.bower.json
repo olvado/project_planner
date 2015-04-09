@@ -1,0 +1,29 @@
+{
+  "name": "css-patterns",
+  "main": "./stylesheets/_patterns.scss",
+  "authors": [
+    "Andrew Walker <andy@madebymany.co.uk>",
+    "Callum Jefferies <callum@madebymany.co.uk>",
+    "Chris Bell <chris@madebymany.com>"
+  ],
+  "description": "A CSS pattern library for Sass",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "index.js",
+    "package.json"
+  ],
+  "homepage": "https://github.com/madebymany/css-patterns",
+  "_release": "43bdb6b241",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "43bdb6b2410c29e38c96bbf31663665b1b5e9de9"
+  },
+  "_source": "git://github.com/madebymany/css-patterns.git",
+  "_target": "*",
+  "_originalSource": "css-patterns"
+}

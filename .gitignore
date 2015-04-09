@@ -15,4 +15,3 @@
 
 config/database.yml
 node_modules
-vendor/assets/components/
