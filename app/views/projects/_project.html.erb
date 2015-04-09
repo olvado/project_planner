@@ -1,11 +1,20 @@
-<article class="block span-<%= project.weeks %> margin-<%= project.week %> js-block">
-  <div class="block--inner" style="background: <%= project.color %>; color: <%= project.invert_color %>;">
-    <h2 class="block--title"><%= project %></h2>
-    <section class="block--details" style="background: <%= project.tint_color %>;">
-      <span>Fee: <%= number_to_currency(project.fee, unit: "£") %></span>
-      <span>Allocated fee: <%= number_to_currency(project.allocated_fee, unit: "£") %></span>
-      <span>Diff: <%= number_to_currency(project.fee_diff, unit: "£") %></span>
+<article class="project">
+  <h2 style="background: <%= project.color %>; color: <%= project.tint_color %>;"><%= project %></h2>
+  <section class="project--details" style="background: <%= project.tint_color %>;">
+    <dl class="project--details_list">
+      <dt class="inline">Starts</dt>
+      <dd class="inline"><%= project.start_at.strftime("%F") %></dd>
+      <dt class="inline">Duration</dt>
+      <dd class="inline"><%= project.weeks %> weeks</dd>
+      <dt>Fee</dt>
+      <dd><%= number_to_currency(project.fee, unit: "£") %></dd>
+      <dt>Allocated fee</dt>
+      <dd><%= number_to_currency(project.allocated_fee, unit: "£") %></dd>
+      <dt>Diff</dt>
+      <dd><%= number_to_currency(project.fee_diff, unit: "£") %></dd>
+    </dl>
+    <div class="project--resources">
       <%= render project.resources.map(&:decorate) %>
-    </section>
-  </div>
+    </div>
+  </section>
 </article>

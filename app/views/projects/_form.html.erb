@@ -7,7 +7,7 @@
   <%= f.input :fee, input_html: { class: 'currency' } %>
   <%= f.input :weeks %>
   <%= f.input :start_at, collection: @project.weeks_for_select, selected: @project.new_record? ? nil : @project.start_at.strftime("%a %d %b %Y") %>
-  <%= f.input :color %>
+  <%= f.input :color, input_html: {type: "color"} %>
   <section id="resources">
     <h3>Allocated resources</h3>
     <%= f.simple_fields_for :resources do |resource| %>

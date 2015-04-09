@@ -23,4 +23,18 @@ class ProjectDecorator < Draper::Decorator
     ColorMath::Blend.alpha(white, new_color, amount).hex
   end
 
+  def json
+    {
+      id: id,
+      name: name,
+      weeks: weeks,
+      start_at: start_at.strftime("%F"),
+      week: week,
+      color: color,
+      tint_color: tint_color,
+      url: h.project_path(self),
+      update_url: h.project_ajax_update_path(self)
+    }
+  end
+
 end

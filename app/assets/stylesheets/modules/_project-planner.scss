@@ -6,7 +6,7 @@
 }
 
 .project-planner_canvas {
-  margin-right: 300px;
+  margin-right: 400px;
   height: 600px;
   border: 1px solid $grey-light;
   position: relative;
@@ -16,6 +16,5 @@
 .project-planner_details {
   float: right;
   min-height: 200px;
-  width: 280px;
-  border-left: 1px dotted $grey-light;
+  width: 380px;
 }

@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
 
   def index
-    @projects = Project.all.map(&:decorate)
+    @projects = Project.order("start_at ASC").map(&:decorate)
     @weeks = []
     53.times do |w|
       date = Date.commercial(Date.today.cwyear, w+1, 1)
@@ -14,17 +14,10 @@ class ProjectsController < ApplicationController
     end
     respond_to do |format|
       format.html
+      format.js
       format.json { render json: {
           weeks: @weeks,
-          projects: @projects.map{|p| {
-              id: p.id,
-              name: p.name,
-              weeks: p.weeks,
-              start_at: p.start_at.strftime("%F"),
-              week: p.week,
-              color: p.color,
-              url: project_path(p)
-            } }
+          projects: @projects.map(&:decorate).map{|p| p.json }
         } }
     end
   end
@@ -62,9 +55,18 @@ class ProjectsController < ApplicationController
   def update
     @project = Project.find(params[:id])
     if @project.update(permitted_params)
-      redirect_to root_url, notice: "Project updated."
+      redirect_to root_url, notice: "Project updated.", method: :get
     else
       render :edit
+    end
+  end
+
+  def ajax_update
+    @project = Project.find(params[:project_id])
+    if @project.update(permitted_params)
+      render json: @project.decorate.json
+    else
+      
     end
   end
 

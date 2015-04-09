@@ -1,8 +1,14 @@
 <div class="resource">
   <%= resource.bar %>
   <div class="resource--details">
-    <%= resource %>
-    <%= number_to_percentage(resource.allocation * 100, precision: 0) %>
-    <%= number_to_currency(resource.project_fee, unit: "£") %>
+    <span class="resource--name">
+      <%= resource %>
+    </span>
+    <span class="resource--allocation">
+      <%= number_to_percentage(resource.allocation * 100, precision: 0) %>
+    </span>
+    <span class="resource--fee">
+      <%= number_to_currency(resource.project_fee, unit: "£") %>
+    </span>
   </div>
 </div>

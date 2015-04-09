@@ -25,6 +25,7 @@ module.exports = BigBird.Module.extend({
       PP.setUpWeeks();
       PP.setUpBlocks();
       PP.setUpEvents();
+      PP.canvas.renderAll();
     });
 
   },
@@ -53,7 +54,7 @@ module.exports = BigBird.Module.extend({
           }),
           text = new fabric.IText(weekNo, {
             fontSize: 18,
-            fontFamily: 'Arial',
+            fontFamily: 'Brown',
             fill: 'black',
             textAligh: 'center',
             top: 8, left: 12,
@@ -95,6 +96,7 @@ module.exports = BigBird.Module.extend({
         y  = 0;
     
     _.each(PP.result.projects, function(project) {
+      
       var width = project.weeks * PP.blockSize,
           rect = new fabric.Rect({
             top: 0,
@@ -107,13 +109,15 @@ module.exports = BigBird.Module.extend({
             top: 16,
             left: 8,
             fontSize: 16,
-            fontFamily: "Arial"
+            fontFamily: "Brown",
+            fontWeight: "bold",
+            fill: project.tint_color
           });
 
       var group = new fabric.Group([rect, text], {
         width: width,
         height: PP.blockSize,
-        left: project.week * PP.blockSize,
+        left: (project.week * PP.blockSize) - PP.blockSize,
         top: y,
         hasRotatingPoint: false,
         lockMovementY: true,
@@ -123,6 +127,17 @@ module.exports = BigBird.Module.extend({
         data: project,
         originX: 'left'
       })
+
+      group.setControlsVisibility({
+        mt: false, mb: false,
+        tl: false, tr: false,
+        bl: false, br: false
+      }).set({
+        borderColor: 'rgba(102,102,102,0.5)',
+        cornerColor: 'rgba(102,102,102,0.8)',
+        cornerSize: 8,
+        transparentCorners: false
+      });;
 
       PP.canvas.add(group);
       y += PP.blockSize;
@@ -140,28 +155,82 @@ module.exports = BigBird.Module.extend({
       if (block.dataType == "project") {
         block.setLeft(PP.nearestBlock(obj.left));
         PP.resetScaleToWidth(block);
+        PP.saveBlockData(block);
       }
     });
 
     this.canvas.on("object:selected", function(obj) {
       switch(obj.target.dataType) {
         case "week":
-          console.log(obj.target);
+          alert(obj.target.data.date + " | £" + obj.target.data.fee);
           break;
         case "project":
-          PP.saveBlockData(obj.target);
+          PP.showBlockData(obj.target.data.url);
           break;
       }
-
     });
+
+    this.canvas.on("object:moving", function(obj) {
+      var block = obj.target;
+      if (block.left < 0) { block.setLeft(0); }
+    });
+
   },
 
   saveBlockData: function(block) {
-    console.log(block);
+    
+    var PP = this,
+        weeks = this.weeks(block.width),
+        week_index = this.weekIndex(block.left),
+        new_data = {
+          weeks: weeks,
+          start_at: this.start_date(week_index)
+        }
+
+    // console.log(new_data);
+
+    $.ajax({
+      url: block.data.update_url,
+      type: 'PUT',
+      data: { project: new_data },
+      success: function(result) {
+        var match = _.find(PP.result.projects, {id: result.id});
+        
+        if (!_.isUndefined(match)) {
+          _.each(_.keys(match), function(key) {
+            match[key] = result[key];
+          });
+        }
+        PP.showBlockData(result.url);
+      },
+      beforeSend: function(xhr) {
+        xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
+      }
+    });
+
+  },
+
+  showBlockData: function(url) {
+    var $container = this.$els('details');
+    $.get(url, function(result) {
+      $container.html(result);
+    });
+  },
+
+  weeks: function(width) {
+    return width / this.blockSize;
+  },
+
+  weekIndex: function(left) {
+    return left / this.blockSize;
+  },
+
+  start_date: function(index) {
+    return this.result.weeks[index].table.date;
   },
 
   nearestBlock: function(n) {
-    return this.blockSize * Math.round(n / this.blockSize);
+    return (n < 0) ? 0 : this.blockSize * Math.round(n / this.blockSize);
   },
 
   resetScaleToWidth: function(block) {

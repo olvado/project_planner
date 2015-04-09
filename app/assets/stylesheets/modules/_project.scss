@@ -1,0 +1,124 @@
+
+.project {
+  h2 {
+    margin: 0;
+    height: 50px;
+    line-height: 50px;
+    padding: 0 16px;
+  }
+}
+
+.project--details {
+  padding: 1em;
+}
+
+.project--details_list {
+  margin: 0 0 0.5em;
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid;
+  overflow: hidden;
+  dt {
+    display: inline-block;
+    float: left;
+    clear: both;
+    font-weight: bold;
+    &:after {
+      content: ": ";
+      margin-right: 0.5em;
+    }
+  }
+  dd {
+    float: right;
+    margin: 0;
+  }
+  .inline {
+    float: left;
+    clear: none;
+  }
+  dd.inline {
+    margin-right: 1em;
+  }
+}
+
+.project--resources {
+  .resource {
+    height: 25px;
+    line-height: 25px;
+    position: relative;
+    margin-bottom: 5px;
+    border: 1px solid $grey-light;
+  }
+  .resource-bar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background: rgba(255,255,255,0.8);
+  }
+  .resource--details {
+    position: relative;
+    background: rgba(255,255,255,0.4);
+    overflow: hidden;
+    padding: 0 0.5em;
+  }
+  .resource--name {
+    font-weight: bold;
+    float: left;
+    margin-right: 5px;
+  }
+  .resource--allocation {
+    float: left;
+  }
+  .resource--fee {
+    float: right;
+  }
+
+
+}
+
+// .block {
+//   position: relative;
+//   max-height: $block-size;
+//   @include transition(all 0.2s ease-in-out);
+//   &.is-active {
+//     max-height: 600px;
+//     .block--inner {
+//       max-height: 500px;
+//     }
+//     .block--details {
+//       min-width: 450px;
+//       max-height: 500px;
+//       padding: 0.5em;
+//     }
+//   }
+// }
+
+// .block--inner {
+//   margin: $block-gutter 0;
+//   max-height: $block-inner;
+//   border-radius: 5px;
+//   @include transition(all 0.2s ease-in-out);
+// }
+
+// .block--title {
+//   font-size: 1em;
+//   margin: 0;
+//   height: $block-inner;
+//   line-height: $block-inner;
+//   padding: 0 0.5em;
+//   white-space: nowrap;
+// }
+
+// .block--details {
+//   color: $grey-dark;
+//   padding: 0 0.5em;
+//   white-space: nowrap;
+//   border-radius: 5px;
+//   border-top-left-radius: 0;
+//   border-top-right-radius: 0;
+//   width: auto;
+//   height: auto;
+//   max-height: 0;
+//   overflow: hidden;
+//   @include transition(all 0.2s ease-in-out);
+// }

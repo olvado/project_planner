@@ -6,8 +6,8 @@ var BigBird = require('bigbird');
 // BigBird Nodules
 var Messenger = require('bb-modules/messenger');
 var ResourceSelect = require('bb-modules/resource-select');
-var ProjectDetails = require('bb-modules/project-details');
-var ProjectPlanner = require('bb-modules/project-planner');
+var ProjectDetails = require('bb-modules/project-planner/project-details');
+var ProjectPlanner = require('bb-modules/project-planner/project-planner');
 
 // BigBird Initializer
 var initializer = new BigBird.Initializer({
