@@ -11,7 +11,7 @@ gem 'simple_form'
 gem 'colormath'
 gem "table_print", "~> 1.0.0"
 gem 'factory_girl_rails'
-gem 'browserify-rails', "~> 0.7"
+# gem 'browserify-rails', "~> 0.7"
 gem 'cocoon'
 
 gem 'sass-rails', '~> 5.0'

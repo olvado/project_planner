@@ -13,10 +13,17 @@
   },
   "dependencies": {
     "bigbird": "^0.3.5",
-    "browsernizr": "^1.0.2",
     "jquery": "^2.1.3",
     "underscore": "^1.8.2",
     "fabric-browserify": "^1.4.13",
-    "browserify": "^9.0.8"
+    "browserify": "^9.0.8",
+    "browsernizr": "^1.0.2"
+  },
+  "scripts": {
+    "modernizr": "browserify app/assets/javascripts/browsernizr.js -o app/assets/javascripts/modernizr.js",
+    "build": "browserify app/assets/javascripts/initializr.js -o app/assets/javascripts/application.js",
+    "watch": "watchify app/assets/javascripts/initializr.js -o app/assets/javascripts/application.js",
+    "start": "npm run watch & npm run modernizr & rails server"
   }
 }
+

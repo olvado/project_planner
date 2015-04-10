@@ -17,7 +17,6 @@ module.exports = BigBird.Module.extend({
       var title = result.project.name;
       PP.$el.html(result);
     });
-    
   }
 
 });

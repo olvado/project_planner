@@ -42,8 +42,6 @@ GEM
     bourbon (4.2.1)
       sass (~> 3.4)
       thor
-    browserify-rails (0.8.1)
-      sprockets (~> 2.0)
     builder (3.2.2)
     byebug (4.0.2)
       columnize (= 0.9.0)
@@ -160,7 +158,6 @@ PLATFORMS
 
 DEPENDENCIES
   bourbon
-  browserify-rails (~> 0.7)
   byebug
   cocoon
   colormath
