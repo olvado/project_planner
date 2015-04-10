@@ -1,0 +1,23 @@
+
+.app--title {
+  float: left;
+  line-height: 52px;
+  overflow: hidden;
+  .icon-madebymany {
+    line-height: 52px;
+    font-size: 1.9em;
+    margin-right: 0.5em;
+    transform: rotate(2deg);
+    display: inline-block;
+  }
+  a {
+    @include unstyled_anchor;
+    @include font-davis;
+    font-weight: bold;
+    text-transform: uppercase;
+    transform: rotate(-2deg);
+    display: inline-block;
+    line-height: 1.2;
+    vertical-align: 7px;
+  }
+}

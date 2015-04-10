@@ -1,0 +1,19 @@
+
+.page--header {
+  background: $grey_pale;
+  overflow: hidden;
+  margin-bottom: 1em;
+  .l-wrap {
+    position: relative;
+  }
+}
+
+.page--title {
+
+}
+
+.page--nav {
+  position: absolute;
+  right: 1em;
+  top: 50%;
+}

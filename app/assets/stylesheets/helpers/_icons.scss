@@ -1,0 +1,52 @@
+@font-face {
+  font-family: 'mxm';
+  src: font_url('mxm.eot?-s35pbr');
+  src: font_url('mxm.eot?#iefix-s35pbr') format('embedded-opentype'),
+    font_url('mxm.woff?-s35pbr') format('woff'),
+    font_url('mxm.ttf?-s35pbr') format('truetype'),
+    font_url('mxm.svg?-s35pbr#mxm') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  font-family: 'mxm';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-close:before {
+  content: "\e608";
+}
+.icon-menu:before {
+  content: "\e607";
+}
+.icon-facebook:before {
+  content: "\e600";
+}
+.icon-instagram:before {
+  content: "\e601";
+}
+.icon-linkedin:before {
+  content: "\e602";
+}
+.icon-slideshare:before {
+  content: "\e603";
+}
+.icon-twitter:before {
+  content: "\e604";
+}
+.icon-mxm:before {
+  content: "\e605";
+}
+.icon-madebymany:before {
+  content: "\e606";
+}

@@ -1,14 +1,19 @@
 @import "bourbon";
+
 @import "normalize-css/normalize";
 @import "css-patterns/stylesheets/patterns";
 
-@import "app";
-@import "variables";
-@import "fonts";
-@import "typography";
+@import "helpers/variables";
+@import "helpers/fonts";
+@import "helpers/typography";
+@import "helpers/icons";
+
 @import "patterns/buttons";
+
+@import "modules/app";
+@import "modules/page";
+
 @import "modules/forms";
-@import "modules/weeks";
 @import "modules/project";
 @import "modules/project-planner";
 

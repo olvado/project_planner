@@ -30,24 +30,11 @@ $instagram: #3F729B;
 $twitter: #55ACEE;
 $slideshare: #F08C1E;
 
+// layout
 
-
-
-
-
-// Blocks
-
-$block-size: 40px;
-$block-gutter: 2px;
-$block-inner: $block-size - ($block-gutter * 2);
-
-$i: 1;
-$position: 0;
-@while $i <= 53 {
-  .position-#{$i} { left: $position; }
-  .margin-#{$i}   { margin-left: $position; }
-  .span-#{$i}     { width: $block-size * $i; }
-  $i: $i + 1;
-  $position: $position + $block-size;
+.l-wrap {
+  max-width: 1400px;
+  margin: auto;
+  padding: 0 1em;
 }
 

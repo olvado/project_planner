@@ -10,7 +10,20 @@
 
 <%= content_tag :body, data: { module: controller_name, action: action_name } do %>
   <section class="app">
-    <div class="app--messenger"><div class="app--messenger_message js-messenger"></div></div>
+    <header class="app--header">
+      <div class="l-wrap">
+        <div class="app--title">
+          <%= link_to root_path do %>
+            <%= icon("madebymany") %>
+            Resourcing
+          <% end %>
+        </div>
+        <nav class="app--nav nav">
+          <%= link_to "Projects", root_path, class: "nav--link" %> 
+        </nav>
+        <%= render 'notifier' if defined?(notice) || defined?(message) %>
+      </div>
+    </header>
     <section class="app--content">
       <%= yield %>
     </section>

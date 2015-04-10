@@ -55,7 +55,7 @@ class ProjectsController < ApplicationController
   def update
     @project = Project.find(params[:id])
     if @project.update(permitted_params)
-      redirect_to root_url, notice: "Project updated.", method: :get
+      redirect_to root_url, notice: "Project updated."
     else
       render :edit
     end

@@ -1,0 +1,10 @@
+
+@import "page/header";
+
+.page {
+
+}
+
+.page--content {
+  @extend .l-wrap;
+}

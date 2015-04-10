@@ -4,9 +4,21 @@
     margin: 0;
     height: 50px;
     line-height: 50px;
-    padding: 0 16px;
   }
 }
+
+.project--header {
+  position: relative;
+  padding: 0 1em;
+}
+
+.project--nav {
+  position: absolute;
+  right: 1em;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
 
 .project--details {
   padding: 1em;
@@ -75,50 +87,3 @@
 
 
 }
-
-// .block {
-//   position: relative;
-//   max-height: $block-size;
-//   @include transition(all 0.2s ease-in-out);
-//   &.is-active {
-//     max-height: 600px;
-//     .block--inner {
-//       max-height: 500px;
-//     }
-//     .block--details {
-//       min-width: 450px;
-//       max-height: 500px;
-//       padding: 0.5em;
-//     }
-//   }
-// }
-
-// .block--inner {
-//   margin: $block-gutter 0;
-//   max-height: $block-inner;
-//   border-radius: 5px;
-//   @include transition(all 0.2s ease-in-out);
-// }
-
-// .block--title {
-//   font-size: 1em;
-//   margin: 0;
-//   height: $block-inner;
-//   line-height: $block-inner;
-//   padding: 0 0.5em;
-//   white-space: nowrap;
-// }
-
-// .block--details {
-//   color: $grey-dark;
-//   padding: 0 0.5em;
-//   white-space: nowrap;
-//   border-radius: 5px;
-//   border-top-left-radius: 0;
-//   border-top-right-radius: 0;
-//   width: auto;
-//   height: auto;
-//   max-height: 0;
-//   overflow: hidden;
-//   @include transition(all 0.2s ease-in-out);
-// }

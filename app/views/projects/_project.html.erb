@@ -1,5 +1,10 @@
 <article class="project">
-  <h2 style="background: <%= project.color %>; color: <%= project.tint_color %>;"><%= project %></h2>
+  <header class="project--header" style="background: <%= project.color %>; color: <%= project.tint_color %>;">
+    <h2><%= project %></h2>
+    <nav class="project--nav">
+      <%= link_to "Edit", edit_project_path(project), class: "project--nav_item button button--small" %>
+    </nav>
+  </header>
   <section class="project--details" style="background: <%= project.tint_color %>;">
     <dl class="project--details_list">
       <dt class="inline">Starts</dt>

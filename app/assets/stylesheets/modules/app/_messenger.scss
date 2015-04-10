@@ -1,0 +1,23 @@
+
+.app--messenger {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 0;
+  text-align: center;
+}
+
+.app--messenger_message {
+  background: rgba(255,255,255,0.25);
+  display: inline-block;
+  max-width: 400px;
+  padding: 0.5em 1em;
+  margin: 1em auto;
+  border-radius: 6px;
+  opacity: 0;
+  @include transition(opacity 2s ease-in-out);
+  .is-active & {
+    opacity: 1;
+  }
+}

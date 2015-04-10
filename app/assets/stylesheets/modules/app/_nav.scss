@@ -1,0 +1,14 @@
+
+.app--nav {
+  float: right;
+  line-height: 68px;
+  @include body-copy;
+  a {
+    @include unstyled_anchor;
+    color: #fff;
+    margin-left: 1em;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
